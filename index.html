@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hero Lectro E-Cycles</title>
+
+    <!-- Set favicon using local image "logo.png" in "images" directory -->
+    <link rel="icon" href="./images/logo.png">
+
+    <!-- Include local stylesheet "styles.css" for HTML content styling -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Include Font Awesome stylesheet from CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Navbar -->
+        <nav>
+            <div>
+                <img src="./images/brand.png" alt="E-Bicycle Logo" width="250" height="90">
+            </div>
+            <div class="menu">
+                <a href="#" class="active" onclick="setActiveLink(this);">Home</a>
+                <a href="#about" onclick="setActiveLink(this);">About</a>
+                <a href="#features" onclick="setActiveLink(this);">Features</a>
+                <a href="#contact" onclick="setActiveLink(this);">Contact Us</a>
+            </div>
+
+            <div class="cta-button">
+                <a href="javascript:void(0);" onclick="openModal()">Pre-Order Now</a>
+            </div>
+        </nav>
+
+        <!-- Home Page -->
+        <div class="h-text">
+            <h2>Discover the Future of Transportation</h2>
+            <p>Experience the power of our new e-cycles. Ride smarter, ride faster, and make every journey
+                effortless.</p>
+            <div class="sale">
+                *Sale Starts on <strong>11 April 2024</strong>
+            </div>
+            <br>
+            <div class="button-container">
+                <div class="button">
+                    <a href="#about">Learn More</a>
+                </div>
+                <div class="cta-button">
+                    <a href="javascript:void(0);" class="cta-button" onclick="openModal()">Pre-Order Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-content">
+            <div class="coming">
+                <h1>Launching In</h1>
+            </div>
+            <div class="countdown">
+                <div id="timer">
+                    <div id="days" class="countdown-item"></div>
+                    <div id="hours" class="countdown-item"></div>
+                    <div id="minutes" class="countdown-item"></div>
+                    <div id="seconds" class="countdown-item"></div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- About Page -->
+        <section id="about">
+            <h2>About Our E-Cycles</h2>
+            <div class="about-content">
+                <div class="about-description">
+                    <p>Introducing Hero Lectro Cycles – the perfect blend of style, performance, and sustainability. Our
+                        cutting-edge electric bicycles redefine your commuting experience, providing a swift and
+                        eco-friendly solution for modern urban living.</p>
+                    <h3>Specifications:</h3>
+                    <ul class="specs">
+                        <li><strong>Model:</strong> Hero Lectro Pro 2024</li>
+                        <li><strong>Motor:</strong> 250W Brushless Electric Motor</li>
+                        <li><strong>Battery:</strong> 36V 10Ah Lithium-Ion Battery</li>
+                        <li><strong>Charging Time:</strong> 4-6 hours</li>
+                        <li><strong>Frame Material:</strong> Lightweight Aluminum Alloy</li>
+                        <li><strong>Range:</strong> Up to 50 miles on a single charge</li>
+                        <li><strong>Gear System:</strong> Shimano 7-Speed</li>
+                        <li><strong>Brakes:</strong> Disc Brakes (Front and Rear)</li>
+                        <li><strong>Tires:</strong> 26" All-Terrain Tires</li>
+                    </ul>
+                    <h3>Color Options:</h3>
+                    <ul class="color-options">
+                        <li><i class="fas fa-circle" style="color: #e74c3c;"></i> Red</li>
+                        <li><i class="fas fa-circle" style="color: #3498db;"></i> Blue</li>
+                        <li><i class="fas fa-circle" style="color: #2ecc71;"></i> Green</li>
+                        <li><i class="fas fa-circle" style="color: #f1c40f;"></i> Yellow</li>
+                        <li><i class="fas fa-circle" style="color: #e67e22;"></i> Orange</li>
+                        <li><i class="fas fa-circle" style="color: #bdc3c7;"></i> Gray</li>
+                        <li><i class="fas fa-circle" style="color: #34495e;"></i> Black</li>
+                        <li><i class="fas fa-circle" style="color: #887A9C;"></i> Purple</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img id="aboutImage" src="./images/about1.jpg" alt="e-cycle images" width="670" height="500">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Page -->
+        <section id="features">
+            <h2>Our E-Cycles Features</h2>
+            <div class="key-features">
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Electric Motor Assistance</h3>
+                        <p>Effortlessly ride with electric motor assistance, making your journeys faster and more
+                            efficient.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Long-lasting Battery</h3>
+                        <p>Equipped with a powerful and long-lasting battery, ensuring a reliable and extended riding
+                            experience.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Stylish and Ergonomic Design</h3>
+                        <p>Experience a blend of style and comfort with our e-bicycle's modern and ergonomic design.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Smart Connectivity</h3>
+                        <p>Connect your e-bicycle to your smartphone for enhanced features and control.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Adjustable Seat and Handlebars</h3>
+                        <p>Customize the seat and handlebar positions to ensure a comfortable riding posture.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Integrated Safety Features</h3>
+                        <p>Enhanced safety with integrated lights, reflective materials, and automated braking systems.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="content">
+                        <h3>GPS Navigation</h3>
+                        <p>Explore new routes and never get lost with built-in GPS navigation on your e-bicycle.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Wireless Charging</h3>
+                        <p>Conveniently charge your devices on the go with wireless charging capabilities.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Built-in Speaker System</h3>
+                        <p>Enjoy your favorite tunes while riding with the integrated speaker system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact">
+            <div class="contact-image">
+                <img src="./images/contact.jpg" alt="Contact Image" height="600" width="500">
+            </div>
+            <div class="container">
+                <h2>Contact Us</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Enter your message" required
+                            style="height:200px"></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+                    <button type="submit" onclick="sendEmail()">Send a message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 HERO LECTRO E-CYCLES | All Rights Reserved
+    </footer>
+
+    <div id="backToTop" class="back-to-top">
+        <a href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Modal Form -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Pre-Order Now</h2>
+            <form id="modalPreOrderForm">
+                <div class="row">
+                    <div class="col">
+                        <label for="modalName">Full Name:<span class="required">*</span></label>
+                        <input type="text" id="modalName" name="modalName" required>
+                        <div id="modalNameError" class="error-message"></div>
+                    </div>
+                    <div class="col">
+                        <label for="modalEmail">Email:<span class="required">*</span></label>
+                        <input type="email" id="modalEmail" name="modalEmail" required>
+                        <div id="modalEmailError" class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="modalPhone">Phone Number:<span class="required">*</span></label>
+                        <input type="tel" id="modalPhone" name="modalPhone" required>
+                        <div id="modalPhoneError" class="error-message"></div>
+                    </div>
+                    <div class="col">
+                        <label for="modalColor">Select Color:<span class="required">*</span></label>
+                        <select id="modalColor" name="modalColor" required>
+                            <option value="" disabled selected>Select a color</option>
+                            <option value="Red">Red</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Green">Green</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Gray">Gray</option>
+                            <option value="Black">Black</option>
+                            <option value="Purple">Purple</option>
+                        </select>
+                        <div id="modalColorError" class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="modalAddress">Address line 1:<span class="required">*</span></label>
+                        <input type="text" id="modalAddress" name="modalAddress" required>
+                        <div id="modalAddressError" class="error-message"></div>
+                    </div>
+                    <div class="col">
+                        <label for="modalAddress2">Address line 2:</label>
+                        <input type="text" id="modalAddress2" name="modalAddress2">
+                    </div>
+                    <div class="col">
+                        <label for="modalCity">City<span class="required">*</span></label>
+                        <input type="text" id="modalCity" name="modalCity" required>
+                        <div id="modalCityError" class="error-message"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="modalPin">Pin-code<span class="required">*</span></label>
+                        <input type="text" id="modalPin" name="modalPin" required>
+                        <div id="modalPinError" class="error-message"></div>
+                    </div>
+                    <div class="col">
+                        <label for="modalState">State<span class="required">*</span></label>
+                        <input type="text" id="modalState" name="modalState" required>
+                        <div id="modalStateError" class="error-message"></div>
+                    </div>
+                    <div class="col">
+                        <label for="modalCountry">Country<span class="required">*</span></label>
+                        <input type="text" id="modalCountry" name="modalCountry" required>
+                        <div id="modalCountryError" class="error-message"></div>
+                    </div>
+                </div>
+                <button type="submit" id="submitButton" onclick="sendWhatsapp()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Include SMTP.js for email sending -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <!-- Include SweetAlert2 library (v11) from CDN for stylish alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Include JavaScript files for general functionality -->
+    <script src="./js/main.js"></script>
+    <script src="./js/modalForm.js"></script>
+    <script src="./js/contactForm.js"></script>
+
+</body>
+
+</html>
