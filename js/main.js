@@ -27,7 +27,7 @@ const launchDate = new Date('2024-01-31T00:00:00').getTime();
 
 const updateCountdown = () => {
 
-    const targetDate = new Date("April 11, 2024 12:00:00");
+    const targetDate = new Date("April 11, 2025 12:00:00");
     const currentDate = new Date();
     const timeDifference = targetDate - currentDate;
 
