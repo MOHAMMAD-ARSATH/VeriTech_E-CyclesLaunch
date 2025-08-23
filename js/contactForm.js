@@ -139,6 +139,7 @@ function sendEmail() {
                         title: "Oops...",
                         text: "Something went wrong! Please try again later.",
                     });
+                    console.error("Email sending error:", response);
                 }
             }
         );
@@ -154,4 +155,5 @@ message.addEventListener('input', validateMessage);
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+
 });
