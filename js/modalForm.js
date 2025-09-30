@@ -1,14 +1,34 @@
 const modal = document.getElementById('modal');
 const preOrderBtn = document.querySelector('.cta-button');
 const closeBtn = document.getElementsByClassName('close')[0];
+const title = document.getElementById("modalTitle");
+
+let isLaunched = sessionStorage.getItem("isLaunched")=="true" ? true: false;
 
 function openModal() {
+    if (isLaunched) {
+        title.textContent = "Book Now";
+    } else {
+        title.textContent = "Pre-Order Now";
+    }
     modal.style.display = 'block';
-    // document.getElementById('submitButton').disabled = true; // Initially disable the button
+   
 }
 
-preOrderBtn.onclick = function () {
-    modal.style.display = 'block';
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+preOrderBtn.onclick = openModal;  
+
+closeBtn.onclick = function () {
+    modal.style.display = 'none';
+};
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 };
 
 closeBtn.onclick = function () {
@@ -23,198 +43,142 @@ window.onclick = function (event) {
 
 
 const submitButton = document.getElementById('submitButton');
+const form = document.getElementById('modalPreOrderForm');
 
-document.getElementById('modalPreOrderForm').addEventListener('submit', function (event) {
+function toggleSubmitButton() {
+    submitButton.disabled = !validateModalForm();
+}
+
+form.addEventListener('submit', function (event) {
     event.preventDefault();
-    validateModalFullName();
-    validateModalEmail();
-    validateModalPhone();
-    validateColor();
-    validateAddress();
-    validateCity();
-    validatePin();
-    validateState();
-    validateCountry();
 
-    const isValidForm = validateModalForm();
-    console.log(isValidForm);
-
-    submitButton.disabled = !isValidForm; // Use !isValidForm to enable the button if the form is valid
-
-    if (isValidForm) {
-        submitButton.style.backgroundColor = '#ff5500'; // Apply the enabled style
+    if (validateModalForm()) {
         const modalName = document.getElementById('modalName').value;
-        const isSuccessful = true;
 
-        if (isSuccessful) {
-            Swal.fire({
-                title: `Thank you for pre-ordering, ${modalName}!`,
-                text: "We will contact you soon.",
-                icon: "success"
-            }).then(() => {
-                // Reload the page after displaying the SwalFire message
-                location.reload();
-            });
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-            });
-        }
-        document.getElementById('modal').style.display = 'none'; // Close the modal after submission
-    } else {
-        submitButton.style.backgroundColor = '#ccc'; // Apply the disabled style
+        Swal.fire({
+            title: isLaunched ? `Thank you for booking, ${modalName}!`: `Thank you for pre-ordering, ${modalName}!`,
+            text: "We will contact you soon.",
+            icon: "success"
+        }).then(() => {
+            location.reload();
+        });
+
+        document.getElementById('modal').style.display = 'none'; 
     }
 });
 
 
-// Validation functions
 function validateModalFullName() {
     const fullNameInput = document.getElementById('modalName');
     const fullName = fullNameInput.value.trim();
     const regex = /^[a-zA-Z ]{5,}$/;
-
     if (!regex.test(fullName)) {
-        showErr('modalName', 'Name should contain atleast 5 characters');
+        showErr('modalName', 'Name should contain at least 5 characters');
         return false;
-    } else {
-        removeErr('modalName');
-        return true;
     }
+    removeErr('modalName');
+    return true;
 }
 
 function validateModalEmail() {
     const emailInput = document.getElementById('modalEmail');
     const email = emailInput.value.trim();
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!regex.test(email)) {
         showErr('modalEmail', 'Please enter a valid email address.');
         return false;
-    } else {
-        removeErr('modalEmail');
-        return true;
     }
+    removeErr('modalEmail');
+    return true;
 }
 
 function validateModalPhone() {
     const phoneInput = document.getElementById('modalPhone');
     const phone = phoneInput.value.trim();
     const regex = /^[6-9]\d{9}$/;
-
     if (!regex.test(phone)) {
         showErr('modalPhone', 'Please enter a valid phone number');
         return false;
-    } else {
-        removeErr('modalPhone');
-        return true;
     }
+    removeErr('modalPhone');
+    return true;
 }
 
 function validateColor() {
-    const colorInput = document.getElementById('modalColor');
-    const color = colorInput.value.trim();
-
-    if (color === '') {
+    const val = document.getElementById('modalColor').value.trim();
+    if (val === '') {
         showErr('modalColor', 'Please select a color.');
         return false;
-    } else {
-        removeErr('modalColor');
-        return true;
     }
+    removeErr('modalColor');
+    return true;
 }
 
 function validateAddress() {
-    const addressInput = document.getElementById('modalAddress');
-    const address = addressInput.value.trim();
-
-    if (address === '') {
+    const val = document.getElementById('modalAddress').value.trim();
+    if (val === '') {
         showErr('modalAddress', 'Please enter the address.');
         return false;
-    } else {
-        removeErr('modalAddress');
-        return true;
     }
+    removeErr('modalAddress');
+    return true;
 }
 
 function validateCity() {
-    const cityInput = document.getElementById('modalCity');
-    const city = cityInput.value.trim();
-
-    if (city === '') {
+    const val = document.getElementById('modalCity').value.trim();
+    if (val === '') {
         showErr('modalCity', 'Please enter the city.');
         return false;
-    } else {
-        removeErr('modalCity');
-        return true;
     }
+    removeErr('modalCity');
+    return true;
 }
 
 function validatePin() {
-    const pinInput = document.getElementById('modalPin');
-    const pin = pinInput.value.trim();
+    const val = document.getElementById('modalPin').value.trim();
     const regex = /^\d{6}$/;
-
-    if (!regex.test(pin)) {
+    if (!regex.test(val)) {
         showErr('modalPin', 'Please enter a valid pin code.');
         return false;
-    } else {
-        removeErr('modalPin');
-        return true;
     }
+    removeErr('modalPin');
+    return true;
 }
 
 function validateState() {
-    const stateInput = document.getElementById('modalState');
-    const state = stateInput.value.trim();
-
-    if (state === '') {
+    const val = document.getElementById('modalState').value.trim();
+    if (val === '') {
         showErr('modalState', 'Please enter the state.');
         return false;
-    } else {
-        removeErr('modalState');
-        return true;
     }
+    removeErr('modalState');
+    return true;
 }
 
 function validateCountry() {
-    const countryInput = document.getElementById('modalCountry');
-    const country = countryInput.value.trim();
-
-    if (country === '') {
+    const val = document.getElementById('modalCountry').value.trim();
+    if (val === '') {
         showErr('modalCountry', 'Please enter the country.');
         return false;
-    } else {
-        removeErr('modalCountry');
-        return true;
     }
+    removeErr('modalCountry');
+    return true;
 }
 
 function validateModalForm() {
-    const isNameValid = validateModalFullName();
-    const isEmailValid = validateModalEmail();
-    const isPhoneValid = validateModalPhone();
-    const isColorValid = validateColor();
-    const isAddressValid = validateAddress();
-    const isCityValid = validateCity();
-    const isPinValid = validatePin();
-    const isStateValid = validateState();
-    const isCountryValid = validateCountry();
-
-    const isValidForm = isNameValid && isEmailValid && isPhoneValid && isColorValid &&
-        isAddressValid && isCityValid && isPinValid && isStateValid && isCountryValid;
-
-    return isValidForm;
+    return (
+        validateModalFullName() &&
+        validateModalEmail() &&
+        validateModalPhone() &&
+        validateColor() &&
+        validateAddress() &&
+        validateCity() &&
+        validatePin() &&
+        validateState() &&
+        validateCountry()
+    );
 }
 
-
-function setupOnchangeValidation(inputId, validationFunction) {
-    const inputElement = document.getElementById(inputId);
-    inputElement.addEventListener('input', function () {
-        validationFunction(inputId);
-    });
-}
 
 function showErr(inputId, errorMessage) {
     const errorElement = document.getElementById(`${inputId}Error`);
@@ -228,7 +192,14 @@ function removeErr(inputId) {
     document.getElementById(inputId).style.border = '1px solid #ccc';
 }
 
-// Setup onchange validation for each input field
+function setupOnchangeValidation(inputId, validationFunction) {
+    const inputElement = document.getElementById(inputId);
+    inputElement.addEventListener('input', function () {
+        validationFunction();
+        toggleSubmitButton();
+    });
+}
+
 setupOnchangeValidation('modalName', validateModalFullName);
 setupOnchangeValidation('modalEmail', validateModalEmail);
 setupOnchangeValidation('modalPhone', validateModalPhone);
