@@ -27,48 +27,50 @@
                 <img src="./images/brand.png" alt="E-Bicycle Logo" width="250" height="90">
             </div>
             <div class="menu">
-                <a href="#" class="active" onclick="setActiveLink(this);">Home</a>
-                <a href="#about" onclick="setActiveLink(this);">About</a>
-                <a href="#features" onclick="setActiveLink(this);">Features</a>
-                <a href="#contact" onclick="setActiveLink(this);">Contact Us</a>
+                <a href="#home" onclick="navigateTo(event, 'home')">Home</a>
+                <a href="#about" onclick="navigateTo(event, 'about')">About</a>
+                <a href="#features" onclick="navigateTo(event, 'features')">Features</a>
+                <a href="#contact" onclick="navigateTo(event, 'contact')">Contact Us</a>
             </div>
-
             <div class="cta-button">
                 <a href="javascript:void(0);" onclick="openModal()">Pre-Order Now</a>
             </div>
         </nav>
 
         <!-- Home Page -->
-        <div class="h-text">
-            <h2>Discover the Future of Transportation</h2>
-            <p>Experience the power of our new e-cycles. Ride smarter, ride faster, and make every journey
-                effortless.</p>
-            <div class="sale">
-                *Sale Starts on <strong>11 April 2027</strong>
-            </div>
-            <br>
-            <div class="button-container">
-                <div class="button">
-                    <a href="#about">Learn More</a>
+        <section id="home">
+            <div class="h-text">
+                <h2>Discover the Future of Transportation</h2>
+                <p>Experience the power of our new e-cycles. Ride smarter, ride faster, and make every journey
+                    effortless.</p>
+                <div class="sale">
+                    *Sale Starts on <strong>11 April 2027</strong>
                 </div>
-                <div class="cta-button">
-                    <a href="javascript:void(0);" class="cta-button" onclick="openModal()">Pre-Order Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="header-content">
-            <div class="coming">
-                <h1>Launching In</h1>
-            </div>
-            <div class="countdown">
-                <div id="timer">
-                    <div id="days" class="countdown-item"></div>
-                    <div id="hours" class="countdown-item"></div>
-                    <div id="minutes" class="countdown-item"></div>
-                    <div id="seconds" class="countdown-item"></div>
+                <br>
+                <div class="button-container">
+                    <div class="button">
+                        <a href="#about">Learn More</a>
+                    </div>
+                    <div class="cta-button">
+                        <a href="javascript:void(0);" class="cta-button" onclick="openModal()">Pre-Order Now</a>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="header-content">
+                <div class="coming">
+                    <h1>Launching In</h1>
+                </div>
+                <div class="countdown">
+                    <div id="timer">
+                        <div id="days" class="countdown-item"></div>
+                        <div id="hours" class="countdown-item"></div>
+                        <div id="minutes" class="countdown-item"></div>
+                        <div id="seconds" class="countdown-item"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </header>
 
@@ -200,6 +202,35 @@
                         <p>Enjoy your favorite tunes while riding with the integrated speaker system.</p>
                     </div>
                 </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="content">
+                        <h3>High-Speed Performance</h3>
+                        <p>Reach higher speeds with optimized motor technology while maintaining smooth and safe
+                            control.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Eco-Friendly Transportation</h3>
+                        <p>Reduce your carbon footprint with a sustainable and environmentally friendly riding option.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Weather Resistant</h3>
+                        <p>Designed to withstand various weather conditions, ensuring a reliable ride anytime.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -248,7 +279,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Pre-Order Now</h2>
+            <h2 id="modalTitle">Pre-Order Now</h2>
             <form id="modalPreOrderForm">
                 <div class="row">
                     <div class="col">
@@ -319,7 +350,7 @@
                         <div id="modalCountryError" class="error-message"></div>
                     </div>
                 </div>
-                <button type="submit" id="submitButton" onclick="sendWhatsapp()">Submit</button>
+                <button type="submit" id="submitButton" onclick="sendWhatsapp()" disabled>Submit</button>
             </form>
         </div>
     </div>
