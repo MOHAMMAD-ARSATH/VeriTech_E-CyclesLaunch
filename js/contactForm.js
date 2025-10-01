@@ -1,4 +1,4 @@
-const form = document.getElementById('contactForm');
+const contactForm = document.getElementById('contactForm');
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
@@ -25,6 +25,7 @@ function validateName() {
         fullname.style.border = '1px solid #ccc';
         removeError(fullname);
     }
+    return isValid;
 }
 
 function validateEmail() {
@@ -38,6 +39,7 @@ function validateEmail() {
         email.style.border = '1px solid #ccc';
         removeError(email);
     }
+    return isValid;
 }
 
 function validatePhone() {
@@ -51,6 +53,7 @@ function validatePhone() {
         phone.style.border = '1px solid #ccc';
         removeError(phone);
     }
+    return isValid;
 }
 
 function validateMessage() {
@@ -63,13 +66,14 @@ function validateMessage() {
         message.style.border = '1px solid #ccc';
         removeError(message);
     }
+    return isValid;
 }
 
 function validateForm() {
     const isAnyFieldEmpty =
-        fullname.value.trim() === '' &&
-        email.value.trim() === '' &&
-        phone.value.trim() === '' &&
+        fullname.value.trim() === '' ||
+        email.value.trim() === '' ||
+        phone.value.trim() === '' ||
         message.value.trim() === '';
 
     if (isAnyFieldEmpty) {
@@ -81,23 +85,20 @@ function validateForm() {
         return false;
     }
 
-    validateName();
-    validateEmail();
-    validatePhone();
-    validateMessage();
-
     const isValidForm =
-        fullname.style.border === '1px solid #ccc' &&
-        email.style.border === '1px solid #ccc' &&
-        phone.style.border === '1px solid #ccc' &&
-        message.style.border === '1px solid #ccc';
+        validateName()
+        && validateEmail()
+        && validatePhone()
+        && validateMessage();
 
-    return true;
+    return isValidForm;
 }
 
 
 function sendEmail() {
+    //alert('Form submitted!')
     const isValidForm = validateForm();
+    console.log(isValidForm)
 
     if (isValidForm) {
         const bodyMsg = `
@@ -119,8 +120,11 @@ function sendEmail() {
         ${fullname.value}`;
 
         Email.send({
-            SecureToken: "abe436b2-f9b7-48f9-a2ec-0631c2702a66",
-            To: 'arsathmd11@gmail.com',
+            //SecureToken: "abe436b2-f9b7-48f9-a2ec-0631c2702a66",
+            Host: "smtp.elasticemail.com",
+            Username: "arsathmd11@gmail.com",
+            Password: "EA5ECD609BC6FD4628A61E45FE20BADA1ED7",
+            To: `${email.value}`,
             From: "arsathmd11@gmail.com",
             Subject: `Customer Enquiry: Hero Lectro e-cycles - ${fullname.value}`,
             Body: bodyMsg
@@ -128,22 +132,25 @@ function sendEmail() {
             message => {
                 if (message == 'OK') {
                     Swal.fire({
-                        title: "Your message has been sent successfully.",
+                        title: "Your message has been sent successfully!",
                         text: "We'll get back to you soon.",
-                        icon: "success"
+                        icon: "success",
+                        // confirmButtonText: "OK", 
+                        // timer: 3000,             
+                        // timerProgressBar: true  
                     });
-                    form.reset();
+                    contactForm.reset();
+
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
                         text: "Something went wrong! Please try again later.",
                     });
-                    console.error("Email sending error:", response);
+                    console.error(message)
                 }
             }
         );
-        // Disable form submission here
         return false;
     }
 }
@@ -153,7 +160,7 @@ email.addEventListener('input', validateEmail);
 phone.addEventListener('input', validatePhone);
 message.addEventListener('input', validateMessage);
 
-form.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
+    sendEmail()
 });
