@@ -123,7 +123,7 @@ function sendEmail() {
             //SecureToken: "abe436b2-f9b7-48f9-a2ec-0631c2702a66",
             Host: "smtp.elasticemail.com",
             Username: "arsathmd11@gmail.com",
-            Password: "EA5ECD609BC6FD4628A61E45FE20BADA1ED7",
+            Password: "999D4353AA437F89DC0A84E682573884FB67",
             To: `${email.value}`,
             From: "arsathmd11@gmail.com",
             Subject: `Customer Enquiry: Hero Lectro e-cycles - ${fullname.value}`,
@@ -164,3 +164,4 @@ contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     sendEmail()
 });
+
